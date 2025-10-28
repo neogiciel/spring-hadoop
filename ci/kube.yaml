@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-hadoop
+  namespace: data
+spec:
+  selector:
+    matchLabels:
+      app: spring-hadoop
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: spring-hadoop
+    spec:
+      containers:
+      - name: spring-hadoop
+        image: neogicel/spring-hadoop:1.088
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-hadoop
+  namespace: data
+  labels:
+    run: spring-hadoop
+  annotations:
+   prometheus.io/path: "/actuator/prometheus"
+   prometheus.io/port: "8080"
+  # prometheus.io/scrape: "true"
+spec:
+  selector:
+    app: spring-hadoop
+  ports:
+  - port: 8080 # The port that the service is running on in the cluster
+    targetPort: 8080 # The port exposed by the service
+  #  nodePort: 31006
+  type: NodePort # type of the service.
+  #Pour exposer le port mettre loadbalancer
+  #type: LoadBalancer
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: spring-hadoop
+  namespace: data
+  annotations:
+    spec.ingressClassName: traefik
+spec:
+  rules:
+    - host: test2.neogiciel.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: spring-hadoop
+                port:
+                  number: 8080
+
+

@@ -1,0 +1,295 @@
+/*STYLES GENERAUX*/
+* {
+    font-family: Avenir, sans-serif;
+    padding: 0px;
+    margin: 0px;
+    text-align: justify;
+    box-sizing: border-box;
+}
+
+body {
+    background: #ededed;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.5em;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+/*HEADER & FOOTER*/
+header, footer {
+    width: 100%;
+    padding: 20px 0px;
+    background: url("/img/cover8.jpg") #4f4f4f;
+    box-shadow: 0px 0px 15px #333;
+}
+
+header {
+    border-bottom: 2px solid #fff;
+    height: 120px;
+}
+
+header h1 {
+        color: white;
+        font-size: 1.5em;
+        width: 90%;
+        margin: 0 auto;
+}
+
+footer {
+    border-top: 2px solid #fff;
+}
+
+footer p {
+        width: 90%;
+        margin: 0 auto;
+        color: #fff;
+        text-align: center;
+}
+
+footer a {
+      color: #fff;
+}
+
+/*SECTIONS*/
+.haut {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 100%;
+    padding-top: 16px;
+    padding-bottom: 20px;
+    margin: 20px auto;
+    box-shadow: 0px 0px 10px #bbb;
+    background-color: #fff;
+    width: 80%;
+
+}
+
+section {
+    width: 80%;
+    margin: 20px 0;
+    padding-top: 4px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    margin: 20px auto;
+    box-shadow: 0px 0px 10px #bbb;
+    background-color: #fff;
+}
+
+
+section h2 {
+    margin: 20px 0;
+     width: 90%;
+}
+
+section > div {
+     width: 90%;
+}
+
+header h1 {
+    width: 80%;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    color: #EA0;
+}
+
+
+.prez {
+   flex: 0 0 45%;
+   border-bottom: none;
+   border-right: 2px solid #ccc;
+   padding-right: 20px;
+   margin-left: auto;
+}
+
+.prez a {
+        display: block;
+        text-align: center;
+        padding: 10px;
+        margin: 10px auto 30px auto;
+        color: #fff;
+        background-color: #EA0;
+        box-shadow: 0px 0px 10px #ccc;
+        border-radius: 5px;
+ }
+
+
+.prez a:hover {
+            color: #f28835;
+            background-color: #fff;
+            border: 2px solid #f28835;
+            box-shadow: 0px 0px 20px #666;
+        }
+
+
+.bouton {
+   width: 20%;
+   border-bottom: none;
+   padding-right: 40px;
+   padding-left: 40px;
+   padding-top: 12px;
+   padding-bottom: 12px;
+   margin-right: 40px;
+   margin-left: 40px;
+   margin-top: 12px;
+   margin-bottom: 12px;
+   font-size: 16px;
+   font-weight: bold;
+   text-align: center;
+   text-shadow: 0 1px 0 rgba( #FFFF, 0.1);
+   background-color: #EA0;
+   box-shadow: 0px 0px 10px #ccc;
+   border-radius: 5px;
+  }
+  .bouton:hover{
+        color: #f28835;
+        background-color: #fff;
+        border: 2px solid #f28835;
+        box-shadow: 0px 0px 20px #666;
+  }
+
+.forms { 
+	border: 1px #FF6600 solid;
+	font-family:'Futura Lt',Arial,sans-serif;
+	font-weight:400;
+	font-size: 16px;
+	font-weight: bold;
+	padding:6px 0 6px 0;
+	background-color: #FFFFFF;
+	color: #666666
+}
+
+
+/*SECTION LOGO*/
+.logo {
+    text-align: center;
+}
+
+.logo img {
+        width: 200px;
+        height: 200px;
+        border: 3px solid #fff;
+        box-shadow: 0px 0px 10px #777;
+        border-radius: 20%;
+        margin-top: -80px;
+  }
+
+
+/*======= tableau =======*/
+/*table {
+  width: 100%;
+  padding: 0 10px;
+  }*/
+
+
+  
+.table{
+    display: table;
+    height: 100%;
+    width: 100%;
+    text-align: left;
+}.table div{
+    display:table-cell;
+    vertical-align: middle;
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+}
+
+.tabborder {
+	border:1px solid #666666;
+	box-shadow:1px 1px 3px #666666;
+	border-style: solid;
+    border-color: #d8970b;
+    border-width: 2px 2px 2px 0;
+    border-radius: 0 8px 0 0;
+    
+
+}
+
+
+ 
+/*.tabborder {
+	border:1px solid #666666;
+	box-shadow:1px 1px 3px #666666;
+}*/
+.tabtitre {
+	font-weight:480;
+	font-family:'Futura Bk',Arial,sans-serif;
+	font-size:14px;
+	background-color: #ca1111;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	font-weight:bold
+}
+.tabtitre-small {
+	font-weight:480;
+	font-family:'Futura Bk',Arial,sans-serif;
+	font-size:12px;
+	background-color: #492D1F;
+	color: #FFFFFF;
+	font-weight:bold
+}
+.tabcell {
+	font-weight:480;
+	font-family:'Futura Lt',Arial,sans-serif;
+	font-size:14px;
+	background-color: #D6D6D6;
+	color: #be1616;
+}
+
+.tabcell-upper {
+	font-weight:400;
+	font-family:'Futura Bk',Arial,sans-serif;
+	font-size:16px;
+	background-color: #D6D6D6;
+	color: #202020;
+	text-transform: uppercase;
+	font-weight:bold;
+}
+
+
+.tabcell -bouton{
+	background-color: #D6D6D6;;
+	align-content: center;
+}
+
+.tabcell-big {
+	font-weight:480;
+	font-family:'Futura Bk',Arial,sans-serif;
+	font-size:18px;
+	background-color: #D6D6D6;
+	color: #222222;
+}
+
+.tablien {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:14px;
+	background-color: #D6D6D6;
+	color: #202020;
+	font-weight:bold
+}
+
+.tabnav {
+	font-weight:480;
+	font-family:'Futura Bk',Arial,sans-serif;
+	font-size:12px;
+	background-color: #ADC642;
+	color: #FFFFFF;
+	font-weight: bold
+}
+.tabnav a:hover { color: #FFFFFF; text-decoration: none }
+.tabnav a:link { text-decoration: none }
+.tabnav a:visited { text-decoration: none }

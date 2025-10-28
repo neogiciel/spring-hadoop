@@ -1,0 +1,6 @@
+#docker build
+docker build -t neogicel/spring-hadoop .
+docker tag neogicel/spring-hadoop neogicel/spring-hadoop:1.088
+docker push neogicel/spring-hadoop:1.088
+docker run -dit --name spring-hadoop -p 8086:8086 neogicel/spring-hadoop
+

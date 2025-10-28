@@ -1,0 +1,146 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres-0
+  namespace: data
+spec:
+  containers:
+  - env:
+    - name: POSTGRES_PASSWORD
+      value: postgres
+    - name: POSTGRES_USER
+      value: postgres
+    - name: POSTGRES_DB
+      value: postgres
+    - name: PGDATA
+      value: /var/lib/postgresql/data/pgdata
+    image: postgres:11.5
+    imagePullPolicy: IfNotPresent
+    name: postgres
+    ports:
+    - containerPort: 5432
+      name: postgresql
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/lib/postgresql/data
+      name: data
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-ngzsg
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  hostname: postgres-0
+  initContainers:
+  - command:
+    - sh
+    - -c
+    - |
+      mkdir -p /var/lib/postgresql/data
+      chmod 700 /var/lib/postgresql/data
+      find /var/lib/postgresql -mindepth 1 -maxdepth 1 -not -name ".snapshot" -not -name "lost+found" | \
+        xargs chown -R 1001:1001
+    image: debian:buster-slim
+    imagePullPolicy: Always
+    name: init-chmod-data
+    resources: {}
+    securityContext:
+      runAsUser: 0
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/lib/postgresql
+      name: data
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-ngzsg
+      readOnly: true
+  nodeName: santander
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  subdomain: postgres-headless
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: data
+    persistentVolumeClaim:
+      claimName: data-postgres-0
+  - name: kube-api-access-ngzsg
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+
+---
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: db
+    meta.helm.sh/release-namespace: data
+  creationTimestamp: "2025-10-18T09:57:27Z"
+  labels:
+    app: postgres
+    app.kubernetes.io/managed-by: Helm
+    chart: postgresql-0.2.5
+    heritage: Helm
+    release: db
+  name: postgres
+  namespace: data
+  resourceVersion: "7454771"
+  uid: 8d833ded-2e23-4d71-9086-2e0833aca2f6
+spec:
+  clusterIP: 10.43.246.43
+  clusterIPs:
+  - 10.43.246.43
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: postgresql
+    port: 5432
+    protocol: TCP
+    targetPort: postgresql
+  selector:
+    app: postgres
+    release: db
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: hive-metastore
+  name: hive-metastore
+  namespace: data
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: hive-metastore
+  template:
+    metadata:
+      labels:
+        io.kompose.service: hive-metastore
+    spec:
+      containers:
+        - args:
+            - /opt/hive/bin/hive
+            - --service
+            - metastore
+          env:
+            - name: SERVICE_PRECONDITION
+              value: namenode:9870 datanode:9864 hive-metastore-postgresql:5432
+              #value: namenode:9870 datanode:9864 postgres:5432
+          envFrom:
+            - configMapRef:
+                name: hadoop-hive-env
+          image: bde2020/hive:2.3.2-postgresql-metastore
+          name: hive-metastore
+          ports:
+            - containerPort: 9083
+              protocol: TCP
+      restartPolicy: Always

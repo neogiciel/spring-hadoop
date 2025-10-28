@@ -1,0 +1,107 @@
+<html>
+<head>
+    <title>Spring Boot</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Spring Boot Haddoop</h1>
+    </header>
+
+    <div class="haut">
+       <div class="prez">
+            <h2>Spring Boot Haddoop</h2>
+            <p>
+             Projet permettant de tester un cluster Hadoop.<br> 
+             <li>Apache Haddoop</li>
+             <li>Apache Hive</li>
+             <li>Apache Spark</li>
+             <li>PostgreSQL</li>
+            </p>
+            
+        </div>
+
+        <div class="prez">
+          <div class="logo">
+            <img src="/img/hadoop.jpg">
+           </div>
+            <h2>Apache Hadoop</h2>
+        </div>
+      </div>
+
+    <section>
+      <div><h1>Apache Hadoop</h1></div>
+      <div><h2>Lire Fichier</h2></div>
+      <div>
+      <form action="/hdfs/read" method="get">
+      <div><label for="name">Nom du Fichier:</label> <input type="text" name="filename" class="forms" value="/user/hello.txt" /><input type="submit" class=bouton value="Lire le Fichier"/></div>
+      </form>
+      </div>
+      <div><h2>Créer Fichier</h2></div>
+      <div>
+      <form action="/hdfs/write" method="post">
+      <div>
+        <label for="name">Nom du Fichier:</label> <input type="text" name="filename" class="forms" value="/user/test.txt"/>
+        <label for="name">Body </label> <input type="text" name="body" value="nouvelle ligne" class="forms" size="20"/>
+        <input type="submit" class=bouton value="Créer Fichier"/></div>
+      </form>
+      </div>
+      <div><h2>Creer Dossier</h2></div>
+      <div>
+      <form action="/hdfs/directory" method="post">
+      <div><label for="name">Nom du Dossier:</label> <input type="text" name="directory" class="forms" value="/user/test" /><input type="submit" class=bouton value="Créer un Dossier"/></div>
+      </form>
+      </div>
+      <div><h2>Supprimer Fichier</h2></div>
+      <div>
+      <form action="/hdfs/delete" method="post">
+      <div><label for="name">Nom du Fichier:</label> <input type="text" name="filename" class="forms" value="/user/hello1.txt" /><input type="submit" class=bouton value="Supprimer le Fichier"/></div>
+      </form>
+      </div>
+    </section>
+
+
+    <section>
+      <div><h2>Node Name</h2></div>
+      <p>Pour ajouter des Fichiers sur le cluster:</p><br>
+      <p><b>Copier le fichier dans le pod:</b><br>
+      >> kubectl cp fichier/people.csv hadoop-hadoop-hdfs-nn-0:/ -n data<br>
+      <b>Monter le fichier dans le cluster:</b><br>
+      >> hdfs dfs -put people.csv /user/<br>
+      <b>Vérifier la présence du fichier:</b><br>
+      >> hdfs dfs -ls /data/<br>
+      </p>
+    </section>
+
+    <section>
+      <div><h1>Apache Spark</h1></div>
+      <div><h2>Learning Machine</h2></div>
+      <!--<div>
+      <form action="/spark/count" method="get">
+      <div><label for="name">Nom du Fichier:</label> <input type="text" name="filename" class="forms" value="/user/rating.txt" /><input type="submit" class=bouton value="Lire le Fichier"/></div>
+      </form>
+      </div>-->
+      <div><a class=bouton href="http://jupyter.neogiciel.net/">jupyter</a> </div>
+    </section>
+
+    <section>
+      <div><h1>Apache Hive</h1></div>
+      <div><h2>Procédure de création d'un table Hive</h2></div>
+      <div><a class=bouton href="https://github.com/neogiciel/hive">github</a> </div>
+    </section>
+
+    <section>
+        <h2>Swagger</h2>
+        <div></div><p>Swagger API définition</p></div><br>
+        <div><a href="/swagger-ui/index.html" class="bouton">Swagger</a></div>
+    </section>
+
+
+    
+    <footer>
+        <p>Neogiciel 2025</p>
+    </footer>
+</body>
+</html>

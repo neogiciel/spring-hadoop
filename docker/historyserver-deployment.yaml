@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: historyserver
+  name: historyserver
+  namespace: data
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: historyserver
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: historyserver
+    spec:
+      containers:
+        - env:
+            - name: SERVICE_PRECONDITION
+              value: namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088
+          envFrom:
+            - configMapRef:
+                name: hadoop-env
+          image: bde2020/hadoop-historyserver:2.0.0-hadoop3.2.1-java8
+          name: historyserver
+          volumeMounts:
+            - mountPath: /hadoop/yarn/timeline
+              name: hadoop-historyserver
+      restartPolicy: Always
+      volumes:
+        - name: hadoop-historyserver
+          persistentVolumeClaim:
+            claimName: hadoop-historyserver

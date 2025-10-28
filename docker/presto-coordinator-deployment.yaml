@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: presto-coordinator
+  name: presto-coordinator
+  namespace: data
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: presto-coordinator
+  template:
+    metadata:
+      labels:
+        io.kompose.service: presto-coordinator
+    spec:
+      containers:
+        - image: shawnzhu/prestodb:0.181
+          name: presto-coordinator
+          ports:
+            - containerPort: 8089
+              protocol: TCP
+      restartPolicy: Always

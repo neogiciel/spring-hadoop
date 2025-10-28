@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: nodemanager1
+  name: nodemanager1
+  namespace: data
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: nodemanager1
+  template:
+    metadata:
+      labels:
+        io.kompose.service: nodemanager1
+    spec:
+      containers:
+        - env:
+            - name: SERVICE_PRECONDITION
+              value: namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088
+          envFrom:
+            - configMapRef:
+                name: hadoop-env
+          image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+          name: nodemanager
+      restartPolicy: Always

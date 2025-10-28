@@ -1,0 +1,214 @@
+/*======= general =======*/
+html, body {
+    overflow-x: hidden;
+}
+body {
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
+}
+.header {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    background-color: #0f0f0f;
+    position: fixed;
+    height: 60px!important;
+    overflow: hidden;
+    z-index: 10;
+}
+/*=======================================*/
+.main {
+    margin: 20px auto;
+    display: block;
+    height: 100%;
+    margin-top: 60px;
+    margin-left: 60px;
+}
+
+.p {
+    margin: 20px auto;
+    margin-top: 20px;
+}
+
+.txt {
+	font-weight:480;
+	font-family:Arial,sans-serif;
+	font-size:2em;
+	text-decoration: none;
+	color: #666666;
+}
+.txtb {
+	font-weight:480;
+	font-family:Arial,sans-serif;
+	font-size:2em;
+	text-decoration: none;
+	color: #666666;
+	font-weight:bold
+}
+.titre{
+	font-weight:480;
+	font-family:Arial,sans-serif;
+	font-size: 2em;
+	font-weight: bold;
+	color: #222222;
+}
+.titre-color{
+	font-weight:480;
+	font-family:Arial,sans-serif;
+	font-size: 2em;
+	font-weight: bold;
+	color: #FF6600;
+}
+.titre-bold {
+	font-weight:480;
+	font-family:Arial,sans-serif;
+	font-size: 2em;
+	font-weight: bold;
+	color: #666666;
+}
+
+.lien {font-weight:480;
+	font-family:Arial,sans-serif;
+	font-size: 1.0em;
+	/*font-weight: bold;*/
+	color: #FF6600;}
+a:hover { color: #FFFFFF; text-decoration: none }
+a:link { text-decoration: none }
+a:visited { text-decoration: none }
+
+/*======= tableau =======*/
+/*table {
+  width: 100%;
+  padding: 0 10px;
+  }*/
+
+
+  
+.table{
+    display: table;
+    height: 100%;
+    width: 100%;
+    text-align: left;
+}.table div{
+    display:table-cell;
+    vertical-align: middle;
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+}
+
+.tabborder {
+	border:1px solid #666666;
+	box-shadow:1px 1px 3px #666666;
+	border-style: solid;
+    border-color: #d8970b;
+    border-width: 2px 2px 2px 0;
+    border-radius: 0 8px 0 0;
+    
+
+}
+
+
+ 
+/*.tabborder {
+	border:1px solid #666666;
+	box-shadow:1px 1px 3px #666666;
+}*/
+.tabtitre {
+	font-weight:480;
+	font-family:'Futura Bk',Arial,sans-serif;
+	font-size:14px;
+	background-color: #ca1111;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	font-weight:bold
+}
+.tabtitre-small {
+	font-weight:480;
+	font-family:'Futura Bk',Arial,sans-serif;
+	font-size:12px;
+	background-color: #492D1F;
+	color: #FFFFFF;
+	font-weight:bold
+}
+.tabcell {
+	font-weight:480;
+	font-family:'Futura Lt',Arial,sans-serif;
+	font-size:14px;
+	background-color: #D6D6D6;
+	color: #be1616;
+}
+
+.tabcell-upper {
+	font-weight:400;
+	font-family:'Futura Bk',Arial,sans-serif;
+	font-size:16px;
+	background-color: #D6D6D6;
+	color: #202020;
+	text-transform: uppercase;
+	font-weight:bold;
+}
+
+
+.tabcell -bouton{
+	background-color: #D6D6D6;;
+	align-content: center;
+}
+
+.tabcell-big {
+	font-weight:480;
+	font-family:'Futura Bk',Arial,sans-serif;
+	font-size:18px;
+	background-color: #D6D6D6;
+	color: #222222;
+}
+
+.tablien {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:14px;
+	background-color: #D6D6D6;
+	color: #202020;
+	font-weight:bold
+}
+
+.tabnav {
+	font-weight:480;
+	font-family:'Futura Bk',Arial,sans-serif;
+	font-size:12px;
+	background-color: #ADC642;
+	color: #FFFFFF;
+	font-weight: bold
+}
+.tabnav a:hover { color: #FFFFFF; text-decoration: none }
+.tabnav a:link { text-decoration: none }
+.tabnav a:visited { text-decoration: none }
+
+.btn {
+    font-size: 14px;
+    font-weight: bold;
+	min-width: 80px;
+    padding: 6px 0;
+    text-align: center;
+    border-radius: 3px;
+    background: #49cc90;
+    text-shadow: 0 1px 0 rgba( #FFFF, 0.1);
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+
+
+.cadre {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px 23px;
+  transition: all 0.3s;
+  border: 2px solid #000;
+  border-radius: 4px;
+  background:transparent;
+  box-shadow: 0 1px 2px rgba(#000 , 0.1);
+}
